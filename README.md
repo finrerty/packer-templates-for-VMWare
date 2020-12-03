@@ -7,7 +7,7 @@ In this repository you can clone VMWare Templates of popular OS for packer 1.5.2
 ## How to start
 Just clone this repository to your local machine which has access to VMware Vcenter
 
-#### Ubuntu
+### Ubuntu
 1) Change variable values in **variables-ubuntu-18.json.example** and then rename it to **variables-ubuntu-18.json**
 2) Change **user** to prefered username in preceed.cfg and replace ssh-rsa public-key with yours
 3) Run command
@@ -18,7 +18,7 @@ make packer_build_ubuntu
 
 **Important_notice: your management machine (where you're using packer) should have ssh access to your_vm_network and this network should have DHCP Server**
 
-#### Oracle Linux
+### Oracle Linux
 1) Change variable values in **variables-oracle-7.json.example** and then rename it to **variables-oracle-7.json**
 2) Change **user** to prefered username in kf7.cfg and replace ssh-rsa public-key with yours
 3) Run command
@@ -29,7 +29,7 @@ make packer_build_oracle
 
 **Important_notice: your management machine (where you're using packer) should have ssh access to your_vm_network and this network should have DHCP Server**
 
-#### Windows Server
+### Windows Server
 1) Change variable values in **variables-windows-server-2019.json.example** and then rename it to **variables-windows-server-2019.json**
 2) Change **y0ur-Passw0rd** to prefered password in autounattend.xml (it appears 3 times in code)
 3) Run command
