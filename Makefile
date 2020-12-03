@@ -4,5 +4,5 @@ packer_build_oracle:
 packer_build_windows:
 	packer build -force --var-file=variables-windows-server-2019.json windows-server-2019.json
 
-packer_build_oracle:
+packer_build_ubuntu:
 	packer build -force --var-file=variables-ubuntu-18.json ubuntu-18.json
