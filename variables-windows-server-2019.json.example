@@ -1,0 +1,11 @@
+{
+    "vcenter_server":"192.168.1.2",
+    "username":"administrator@vsphere6.local",
+    "password":"your_password",
+    "datastore":"your_datastore",
+    "folder": "your_vm_folder",
+    "cluster": "your_vm_cluster",
+    "resource_pool": "your_vm_resource_pool",
+    "network": "your_vm_network",
+    "winadminpassword": "y0ur_S3cr3t_Pa$$w0rd"
+}

@@ -1,0 +1,15 @@
+---
+- name: App configuration
+  hosts: all
+  become: true
+  tasks:
+    - name: Change SSH config file
+      template:
+        src: templates/sshd_config.j2
+        dest: /etc/ssh/sshd_config
+        mode: 0600
+      tags: ssh
+      notify: restart sshd
+  handlers:
+    - name: restart sshd
+      systemd: name=sshd state=restarted

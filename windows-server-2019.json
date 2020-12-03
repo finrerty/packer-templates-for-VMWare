@@ -1,0 +1,59 @@
+{
+  "builders": [
+    {
+      "CPUs": 2,
+      "RAM": 2048,
+      "RAM_reserve_all": true,
+      "cluster": "{{user `cluster`}}",
+      "communicator": "winrm",
+      "convert_to_template": "true",
+      "datastore": "{{user `datastore`}}",
+      "disk_controller_type": "lsilogic-sas",
+      "firmware": "bios",
+      "floppy_files": [
+        "autounattend.xml",
+        "scripts/disable-network-discovery.cmd",
+        "scripts/enable-rdp.cmd",
+        "scripts/enable-winrm.ps1",
+        "scripts/install-vm-tools.cmd",
+        "scripts/set-temp.ps1",
+        "scripts/enable-ansible.ps1"
+      ],
+      "folder": "{{user `folder`}}",
+      "guest_os_type": "windows9Server64Guest",
+      "insecure_connection": "true",
+      "iso_paths": [
+        "[HVs-VMs-08-QA] ISO/SW_DVD9_Win_Server_STD_CORE_2019_64Bit_Russian_DC_STD_MLF_X21-96590.ISO",
+        "[] /vmimages/tools-isoimages/windows.iso"
+      ],
+      "network_adapters": [
+        {
+          "network": "{{user `network`}}",
+          "network_card": "vmxnet3"
+        }
+      ],
+      "password": "{{user `password`}}",
+      "storage": [
+        {
+          "disk_size": 32768,
+          "disk_thin_provisioned": true
+        }
+      ],
+      "type": "vsphere-iso",
+      "username": "{{user `username`}}",
+      "vcenter_server": "{{user `vcenter_server`}}",
+      "vm_name": "template_windows2019",
+      "winrm_password": "{{user `winadminpassword`}}",
+      "winrm_username": "Administrator"
+    }
+  ],
+  "provisioners": [
+    {
+      "inline": [
+        "ipconfig"
+      ],
+      "type": "windows-shell"
+    }
+  ]
+}
+

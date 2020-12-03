@@ -1,0 +1,57 @@
+{
+  "builders": [
+    {
+      "CPUs": 2,
+      "RAM": 2048,
+      "RAM_reserve_all": true,
+      "boot_command": [
+        "<esc><wait>",
+        "linux ks=hd:fd0:/ks7.cfg<enter>"
+      ],
+      "boot_order": "disk,cdrom",
+      "cluster": "{{user `cluster`}}",
+      "convert_to_template": "true",
+      "datastore": "{{user `datastore`}}",
+      "disk_controller_type": "pvscsi",
+      "floppy_files": [
+        "./ks7.cfg"
+      ],
+      "folder": "{{user `folder`}}",
+      "guest_os_type": "oracleLinux7_64Guest",
+      "insecure_connection": "true",
+      "iso_checksum": "sha256:507b9155a4fddd8b466f5f47a87c5b4daf6f14a676037cdcaf9c1cebf7f40dd7",
+      "iso_urls": "http://mirrors.dotsrc.org/oracle-linux/OL7/u6/x86_64/OracleLinux-R7-U6-Server-x86_64-dvd.iso",
+      "network_adapters": [
+        {
+          "network": "{{user `network`}}",
+          "network_card": "vmxnet3"
+        }
+      ],
+      "password": "{{user `password`}}",
+      "resource_pool": "{{user `resource_pool`}}",
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "storage": [
+        {
+          "disk_size": 32768,
+          "disk_thin_provisioned": true
+        }
+      ],
+      "type": "vsphere-iso",
+      "username": "{{user `username`}}",
+      "vcenter_server": "{{user `vcenter_server`}}",
+      "vm_name": "template_oracle7"
+    }
+  ],
+  "provisioners": [
+    {
+      "extra_arguments": [
+        "--tags",
+        "ssh"
+      ],
+      "playbook_file": "ansible/playbooks/deny_pwd_auth.yml",
+      "type": "ansible"
+    }
+  ]
+}
+
